@@ -7,15 +7,15 @@ const App = () => {
     <div>
       <h1>📜 Liste des Posts</h1>
 
-      {/* Bouton de rechargement */}
+    
       {/* <button onClick={refetch} disabled={loading}>
         {loading ? "Chargement..." : "Recharger"}
       </button> */}
 
-      {/* Affichage de l'erreur si elle existe */}
+   
       {error && <p className="error">Erreur : {error}</p>}
       
-      {/* Affichage des posts si les données sont chargées */}
+      
       {data && data.length > 0 ? (
         <ul>
           {data.map((post) => (
