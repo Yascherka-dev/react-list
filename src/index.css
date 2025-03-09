@@ -77,7 +77,7 @@ button:hover {
   font-size: 16px;
 }
 
-/* Indicateur de chargement */
+/* Indicateur de chargement mais pas fonctionel */
 .loader {
   display: flex;
   justify-content: center;
