@@ -1,32 +1,28 @@
-import useFetch from "../hooks/useFetch";
-import Post from "./Post";
+import React from 'react';
+import useFetch from '../hooks/useFetch';
 
-function PostsList() {
-  const {
-    data: posts,
-    loading,
-    error,
-    refetch,
-  } = useFetch("https://jsonplaceholder.typicode.com/posts");
+const PostsList = () => {
+  const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/posts');  
 
-  if (loading) return (
-    <div className="loader">
-      <div></div><div></div><div></div>
-    </div>
-  );
+
+  if (loading) return <div>Chargement...</div>;
+
   
-  if (error) return <p>Erreur : {error}</p>;
+  if (error) return <div>Erreur : {error.message}</div>;
 
   return (
     <div>
-      <button onClick={refetch}> Recharger </button>
-      <div className="grid gap-4">
-        {posts?.map((post) => (
-          <Post key={post.id} post={post} />
+      <h1>Liste des Posts</h1>
+      <ul>
+        {data && data.map(post => (
+          <li key={post.id}>
+            <a href={`/post/${post.id}`}>{post.title}</a> 
+            <p>{post.body}</p> 
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
-}
+};
 
 export default PostsList;
